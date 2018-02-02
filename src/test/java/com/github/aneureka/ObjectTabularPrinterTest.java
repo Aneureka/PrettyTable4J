@@ -1,6 +1,5 @@
-package cn.aneureka.prettytable;
+package com.github.aneureka;
 
-import org.junit.Before;
 import org.junit.Test;
 
 /**

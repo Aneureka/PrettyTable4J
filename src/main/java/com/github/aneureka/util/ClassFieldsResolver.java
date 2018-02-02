@@ -1,4 +1,4 @@
-package cn.aneureka.prettytable.util;
+package com.github.aneureka.util;
 
 import java.lang.reflect.Field;
 import java.util.LinkedHashMap;

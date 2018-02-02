@@ -1,9 +1,9 @@
-package cn.aneureka.prettytable;
+package com.github.aneureka;
 
-import cn.aneureka.prettytable.exception.FieldsNotSetException;
-import cn.aneureka.prettytable.exception.RowSizeMismatchException;
-import cn.aneureka.prettytable.util.ClassFieldsResolver;
-import cn.aneureka.prettytable.util.PrettyTable;
+import com.github.aneureka.exception.FieldsNotSetException;
+import com.github.aneureka.exception.RowSizeMismatchException;
+import com.github.aneureka.util.ClassFieldsResolver;
+import com.github.aneureka.util.PrettyTable;
 
 import java.util.ArrayList;
 import java.util.List;

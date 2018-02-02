@@ -1,4 +1,4 @@
-package cn.aneureka.prettytable.exception;
+package com.github.aneureka.exception;
 
 /**
  * @author hiki on 2018-02-02
