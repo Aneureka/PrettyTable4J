@@ -1,29 +1,23 @@
-# PrettyTable4J
+package com.github.aneureka;
 
-## Feature
+import org.junit.Test;
 
-- Print your [Object/Iterable fields] in an elegant way
+import java.util.Arrays;
+import java.util.List;
 
-## How to use
+/**
+ * @author hiki on 2018-02-02
+ */
+public class TabularStringifierTest {
 
-```xml
-<dependency>
-    <groupId>com.github.aneureka</groupId>
-    <artifactId>PrettyTable4J</artifactId>
-    <version>0.0.1</version>
-</dependency>
-```
-
-## For example
-
-```java
-@Test
-public void print() {
-    List<String> a = Arrays.asList("a", "b", "c");
-    System.out.println(TabularStringifier.stringify(a));
-    // or you can simply do [TabularStringifier.stringify("a")] to deal with an object
+    @Test
+    public void stringify() {
+        List<String> a = Arrays.asList("1", "22", "44");
+        System.out.println(TabularStringifier.stringify(a));
+    }
 }
 
+/*
 OUTPUT:
 +-------+-------+------+------------------+-----------------+-----+--------+-------+
 | value | coder | hash | serialVersionUID | COMPACT_STRINGS | ... | LATIN1 | UTF16 |
@@ -40,6 +34,4 @@ OUTPUT:
 | 1e780 |       |      | 7710             |                 |     |        |       |
 | 3     |       |      |                  |                 |     |        |       |
 +-------+-------+------+------------------+-----------------+-----+--------+-------+
-   
-```
-
+*/

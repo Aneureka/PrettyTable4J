@@ -1,7 +1,9 @@
 package com.github.aneureka.util;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,13 +13,17 @@ import java.util.Map;
 public class ClassFieldsResolver {
 
     public static Map<String, String> getFields(Object o) {
-        Map<String, String> fieldValues = new LinkedHashMap<>();
+        Map<String, String> fields = new LinkedHashMap<>();
         try {
-            getFields(o, o.getClass(), fieldValues);
+            getFields(o, o.getClass(), fields);
         } catch (IllegalAccessException e) {
             System.err.println(e.getMessage());
         }
-        return fieldValues;
+        return fields;
+    }
+
+    public static List<String> getFieldValues(Object o) {
+        return new ArrayList<>(getFields(o).values());
     }
 
     private static void getFields(Object o, Class<?> clazz, Map<String, String> container) throws IllegalAccessException {

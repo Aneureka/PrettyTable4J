@@ -4,7 +4,9 @@ import com.github.aneureka.exception.FieldsNotSetException;
 import com.github.aneureka.exception.RowSizeMismatchException;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -34,6 +36,47 @@ public class PrettyTable {
     public PrettyTable(List<String> fields) {
         this.rows = new ArrayList<>();
         this.fields = fields;
+    }
+
+    public static PrettyTable fromObject(Object o) {
+        if (o == null) {
+            return null;
+        }
+        Map<String, String> fields = ClassFieldsResolver.getFields(o);
+        List<String> fieldNames = new ArrayList<>(fields.keySet());
+        List<String> fieldValues = new ArrayList<>(fields.values());
+        // construct the table
+        PrettyTable table = new PrettyTable(fieldNames);
+        try {
+            table.addRow(fieldValues);
+        } catch (FieldsNotSetException | RowSizeMismatchException e) {
+            System.err.println(e.getMessage());
+        }
+        return table;
+    }
+
+    public static PrettyTable fromIterable(Iterable<?> iterable) {
+        if (iterable == null || !iterable.iterator().hasNext()) {
+            return null;
+        }
+
+        Iterator<?> itr = iterable.iterator();
+
+        // determine the fields
+        Object o = itr.next();
+        PrettyTable table = fromObject(o);
+
+        while (itr.hasNext()) {
+            o = itr.next();
+            try {
+                table.addRow(ClassFieldsResolver.getFieldValues(o));
+            } catch (FieldsNotSetException | RowSizeMismatchException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+
+        return table;
+
     }
 
     public void addRow(List<String> row) throws FieldsNotSetException, RowSizeMismatchException {
