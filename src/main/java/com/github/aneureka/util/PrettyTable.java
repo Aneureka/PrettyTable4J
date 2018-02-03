@@ -137,7 +137,6 @@ public class PrettyTable {
 
         StringBuilder builder = new StringBuilder();
         for (List<String> splitRow : splitRows) {
-            System.out.println();
             for (String item : splitRow) {
                 builder.append(VERTICAL_SYMBOL)
                         .append(getRepetitiveSymbols(BLANK_SYMBOL, L_PAD))
