@@ -67,6 +67,7 @@
     </distributionManagement>
 
     <build>
+        <pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -100,7 +101,7 @@
                 <version>1.5</version>
                 <executions>
                     <execution>
-                        <id>signPrettyTable4J-0.0.1.jar-artifacts</id>
+                        <id>signPrettyTable4J-0.0.3.jar-artifacts</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>sign</goal>
@@ -120,6 +121,6 @@
                 </configuration>
             </plugin>
         </plugins>
+        </pluginManagement>
     </build>
-
 </project>
