@@ -35,7 +35,7 @@ public class ClassFieldsResolver {
         Field[] fields = clazz.getDeclaredFields();
         for (Field f : fields) {
             f.setAccessible(true);
-            container.put(f.getName(), f.get(o).toString());
+            container.put(f.getName(), f.get(o) == null ? "null" : f.get(o).toString());
         }
     }
 
